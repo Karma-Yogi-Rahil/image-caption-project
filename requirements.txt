@@ -1,7 +1,7 @@
-streamlit
-numpy
 tensorflow
-os
-cv2
+streamlit-webrtc
 matplotlib
-time
+openCV-python-headless
+pydub
+numpy
+os
