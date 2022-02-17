@@ -4,4 +4,3 @@ matplotlib
 openCV-python-headless
 pydub
 numpy
-os
