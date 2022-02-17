@@ -47,14 +47,12 @@ if uploaded_file is not None:
     with st.spinner("Please wait for few seconds"):
         time.sleep(10)
 
-    path = "static/uploads/" + uploaded_file.name
-    path = path.replace("\\", "")
-    with open(path, "wb") as f:
-        f.write(uploaded_file.getbuffer())
+    
+    
 
-    test_feature = modele.predict(getImage(path)).reshape(1,2048)
+    test_feature = modele.predict(getImage(uploaded_file)).reshape(1,2048)
 
-    test_img_path = path
+    test_img_path = uploaded_file
     test_img = cv2.imread(test_img_path)
     test_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2RGB)
 
@@ -84,7 +82,7 @@ if uploaded_file is not None:
 
         text_inp.append(sampled_word)
     
-    st.image(path)
+    st.image(uploaded_file)
     st.write(caption[:-8])
 
 
