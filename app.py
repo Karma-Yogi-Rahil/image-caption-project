@@ -34,7 +34,7 @@ def getImage(x):
     
     
 
-    test_img = np.array(Image.open(uploaded_file))
+    test_img = np.array(x)
     test_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2RGB)
 
     test_img = cv2.resize(test_img, (224,224))
@@ -51,7 +51,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image)
     st.write(uploaded_file)
-    test_feature = modele.predict(getImage(uploaded_file)).reshape(1,2048)
+    test_feature = modele.predict(getImage(image)).reshape(1,2048)
 
     #test_img_path = uploaded_file
     #test_img = cv2.imread(test_img_path)
