@@ -3,14 +3,15 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
-import os
 import cv2
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-
 import time
+from PIL import Image
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.image import load_img
+
 
 # modele -> resnet model
 # model.h5 -> main model
@@ -31,9 +32,9 @@ inv_dict = {i:x for x,i in final.items()}
 
 def getImage(x):
     
-    test_img_path = x
+    
 
-    test_img = cv2.imread(test_img_path)
+    test_img = np.array(Image.open(uploaded_file))
     test_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2RGB)
 
     test_img = cv2.resize(test_img, (224,224))
@@ -45,18 +46,16 @@ def getImage(x):
 uploaded_file = st.file_uploader("Choose an image", type=["png", "jpg", "jpeg"])
 if uploaded_file is not None:
     with st.spinner("Please wait for few seconds"):
-        time.sleep(10)
-        
-
+        time.sleep(5)
     
-    
-
-    st.image(uploaded_file)
+    image = Image.open(uploaded_file)
+    st.image(image)
+    st.write(uploaded_file)
     test_feature = modele.predict(getImage(uploaded_file)).reshape(1,2048)
 
-    test_img_path = uploaded_file
-    test_img = cv2.imread(test_img_path)
-    test_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2RGB)
+    #test_img_path = uploaded_file
+    #test_img = cv2.imread(test_img_path)
+    #test_img = cv2.cvtColor(test_img, cv2.COLOR_BGR2RGB)
 
     text_inp = ['startofseq']
 
