@@ -1,7 +1,0 @@
-streamlit
-numpy
-tensorflow
-os
-cv2
-matplotlib
-time

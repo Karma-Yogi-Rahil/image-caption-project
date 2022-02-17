@@ -1,0 +1,6 @@
+tensorflow
+streamlit-webrtc
+matplotlib
+openCV-python-headless
+pydub
+numpy
