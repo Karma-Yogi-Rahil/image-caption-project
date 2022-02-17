@@ -46,10 +46,12 @@ uploaded_file = st.file_uploader("Choose an image", type=["png", "jpg", "jpeg"])
 if uploaded_file is not None:
     with st.spinner("Please wait for few seconds"):
         time.sleep(10)
+        
 
     
     
 
+    st.image(uploaded_file)
     test_feature = modele.predict(getImage(uploaded_file)).reshape(1,2048)
 
     test_img_path = uploaded_file
@@ -82,7 +84,7 @@ if uploaded_file is not None:
 
         text_inp.append(sampled_word)
     
-    st.image(uploaded_file)
+    
     st.write(caption[:-8])
 
 
